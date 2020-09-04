@@ -56,7 +56,7 @@ CREATE TABLE proex.empresajunior_proposta(
 	CONSTRAINT empresajunior_proposta_empresajuniorid__fkey FOREIGN KEY (empresajunior_id)
         REFERENCES proex.empresajunior (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        ON DELETE CASCADE
 );
 
 ALTER TABLE proex.empresajunior_proposta OWNER to postgres;
@@ -82,7 +82,7 @@ CREATE TABLE proex.empresajunior_supervisor (
 	CONSTRAINT empresajunior_supervisor_empresajuniorid__fkey FOREIGN KEY (empresajunior_id)
         REFERENCES proex.empresajunior (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        ON DELETE CASCADE,
     CONSTRAINT empresajunior_supervisor_nroufscar_fkey FOREIGN KEY (nro_ufscar)
         REFERENCES core.pessoa (id) MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -114,7 +114,7 @@ CREATE TABLE proex.empresajunior_discente (
 	CONSTRAINT empresajunior_empresajuniorid_fkey FOREIGN KEY (empresajunior_id)
         REFERENCES proex.empresajunior (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        ON DELETE CASCADE,
     CONSTRAINT empresajunior_discente_nroufscar_fkey FOREIGN KEY (nro_ufscar)
         REFERENCES core.pessoa (id) MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -145,7 +145,7 @@ CREATE TABLE proex.empresajunior_anexo (
 	CONSTRAINT empresajunior_fkey FOREIGN KEY (empresajunior_id)
 	        REFERENCES proex.empresajunior (id) MATCH SIMPLE
 	        ON UPDATE NO ACTION
-	        ON DELETE NO ACTION
+	        ON DELETE CASCADE
 );
 
 ALTER TABLE proex.empresajunior_anexo OWNER to postgres;
@@ -188,7 +188,7 @@ CREATE TABLE proex.empresajunior_tramitacao (
 	CONSTRAINT empresajunior_tramitacao_empresajuniorid_fkey FOREIGN KEY (empresajunior_id)
         REFERENCES proex.empresajunior (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        ON DELETE CASCADE,
 	CONSTRAINT empresajunior_tramitacao_tramiteext_fkey FOREIGN KEY (etapa)
         REFERENCES proex.empresajunior_tramitacao_etapa (id) MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -233,7 +233,7 @@ CREATE TABLE proex.empresajunior_esclarecimento (
 	CONSTRAINT empresajunior_esclarecimento_empresajuniorid_fkey FOREIGN KEY (empresajunior_id)
         REFERENCES proex.empresajunior (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        ON DELETE CASCADE,
     CONSTRAINT empresajunior_esclarecimento_ejtramitacaoid_fkey FOREIGN KEY (empresajunior_tramitacao_id)
         REFERENCES proex.empresajunior_tramitacao (id) MATCH SIMPLE
         ON UPDATE NO ACTION
